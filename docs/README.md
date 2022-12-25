@@ -4,6 +4,10 @@
 
 - 深入, pure 函数式编程
 
+## 讨论
+
+- [如何学习 Haskell ？](https://www.zhihu.com/question/20193745)
+
 ## reference
 
 - [Real World Haskell 中文版](https://rwh.readthedocs.io/en/latest/index.html)
