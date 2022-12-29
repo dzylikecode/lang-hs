@@ -1,5 +1,5 @@
-# haskell
+# Haskell
 
-## 可读性
+## idea
 
-不必打包, 压缩, 方便自己阅读和修改
+可以通过 chatGPT 来将 python 转化为 Haskell

@@ -1,5 +1,60 @@
 # environment
 
+GHC has three main components.
+
+- **ghc** is an optimizing compiler that generates fast native code.
+- **ghci** is an interactive interpreter and debugger.
+- **runghc** is a program for running Haskell programs as scripts, without needing to compile them first.
+
 ## installation
 
 - [Installation](https://www.haskell.org/ghcup/install/#how-to-install)
+- [Appendix A. Installing GHC and Haskell libraries](https://book.realworldhaskell.org/read/installing-ghc-and-haskell-libraries.html)
+
+[Installing GHCup vs vanilla GHC for haskell](https://stackoverflow.com/questions/72056777/installing-ghcup-vs-vanilla-ghc-for-haskell) 推荐第一个 GHCup
+
+---
+
+安装依赖:
+
+```bash
+sudo apt-get install build-essential curl libffi-dev libffi6 libgmp-dev libgmp10 libncurses-dev libncurses5 libtinfo5
+```
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+```
+
+!> 下载不会很顺畅, 会卡住, 可以再执行一遍
+
+到了 download latest package 会完全卡住, 则完全可以取消, 只用将以下添入环境变量即可
+
+```bash
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+```
+
+然后通过 tui 进行下载即可
+
+```bash
+ghcup tui
+```
+
+## uninstall
+
+```bash
+ghcup nuke
+```
+
+## GHCI
+
+ghc interpreter
+
+```bash
+ghci
+```
+
+---
+
+quit: `Ctrl+D`
+
+---
