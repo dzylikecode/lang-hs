@@ -58,3 +58,9 @@ ghci
 quit: `Ctrl+D`
 
 ---
+
+`:info (+)`
+
+## vscode extension
+
+- Haskell

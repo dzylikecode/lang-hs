@@ -1,5 +1,11 @@
 # C
 
+## comment
+
+```hs
+-- this is a comment
+```
+
 ## different
 
 |  C   | Haskell |
