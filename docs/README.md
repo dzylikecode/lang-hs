@@ -1,13 +1,8 @@
-# haskell
+# Haskell
 
 ## target
 
 - 深入, pure 函数式编程
-
-- Create an application that downloads podcast episodes from the Internet, and stores its history in an SQL database.
-- Test your code in an intuitive and powerful way. Describe properties that ought to be true, then let the QuickCheck library generate test cases automatically.
-- Take a grainy phone camera snapshot of a barcode, and turn it into an identifier that you can use to query a library or bookseller's web site.
-- Write code that thrives on the web. Exchange data with servers and clients written in other languages using JSON notation. Develop a concurrent link checker.
 
 ## 讨论
 
@@ -19,6 +14,22 @@
 - [Real World Haskell by Bryan O'Sullivan, Don Stewart, and John Goerzen](https://book.realworldhaskell.org/)
 - [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters)
 - [How to learn Haskell](https://github.com/bitemyapp/learnhaskell)
+
+- [Haskell By Example](https://github.com/lotz84/haskellbyexample)
+
+  - [preview](http://lotz84.github.io/haskellbyexample/)
+
+- [Examples for "Haskell Tutorial and Cookbook" by Mark Watson](https://github.com/mark-watson/haskell_tutorial_cookbook_examples)
+
+- [Functional Programming by Example](https://github.com/caiorss/Functional-Programming)
+
+  - [preview](http://caiorss.github.io/Functional-Programming/)
+
+- [Haskell SDL2 Examples](https://github.com/palf/haskell-sdl2-examples)
+
+for python:
+
+- [adaptive](https://github.com/python-adaptive/adaptive)
 
 ### Reference material
 

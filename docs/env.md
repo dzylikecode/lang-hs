@@ -64,3 +64,66 @@ quit: `Ctrl+D`
 ## vscode extension
 
 - Haskell
+
+## stack
+
+- [What is the difference between Cabal and Stack?](https://stackoverflow.com/questions/30913145/what-is-the-difference-between-cabal-and-stack)
+
+  stack is better
+
+```bash
+stack update
+```
+
+获取 index
+
+docs: https://docs.haskellstack.org/en/stable/
+
+---
+
+```bash
+stack new <project_name>
+```
+
+有可能不是 stack, 而是`stack-x.x.x`
+
+init
+
+```bash
+stack new test new-template -p "author-email:value" -p "author-name:value" -p "category:value" -p "copyright:value" -p "github-username:value"
+```
+
+---
+
+edit config
+
+path: `$HOME/.stack/config.yaml`
+
+---
+
+使用 qualified
+
+添加
+
+- `-XImportQualifiedPost`选项
+
+---
+
+```hs
+import Control.Concurrent.Async
+```
+
+- 搜索`Control.Concurrent.Async`
+- 查看网页标题: `async-2.2.4: Run IO operations asynchronously and wait for their results`
+- 添加信息到 package.yaml:`async`
+- `stack install`
+
+!> install 的时候会有文件复制到 `$HOME/.local/bin`中, 自己注意删除
+
+不要使用 install 命令
+
+---
+
+推荐参考
+
+- repos: https://github.com/bravit/hid-examples
