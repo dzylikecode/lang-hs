@@ -1,2 +1,8 @@
 .vscode/
 temp
+# stack binaries
+.stack-work/
+# The file or directory is ignored if its name ends with a tilde (~).
+*~
+stack.yaml.lock
+*.cabal
