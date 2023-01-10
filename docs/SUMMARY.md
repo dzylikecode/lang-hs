@@ -1,2 +1,7 @@
 - [:boat:](/docs/README.md)
 - [env](/docs/env.md)
+- [function](/docs/function.md)
+- [type](/docs/type.md)
+- [module](/docs/module.md)
+- [test](/docs/test.md)
+- [recursion](/docs/recursion.md)

@@ -61,6 +61,12 @@ quit: `Ctrl+D`
 
 `:info (+)`
 
+---
+
+`:l fileNameWithOutExt` load the file
+
+`:r fileNameWithOutExt` reload the file
+
 ## vscode extension
 
 - Haskell
