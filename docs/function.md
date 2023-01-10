@@ -1,6 +1,8 @@
 # function
 
-## 调用
+## application
+
+调用
 
 用空格分开参数
 
@@ -403,6 +405,22 @@ calcBmis xs = [bmi | (w, h) <- xs, let bmi = w / h ^ 2, bmi >= 25.0]
 
 We can't use the `bmi` name in the `(w, h) <- xs` part because it's defined prior to the _let_ binding.
 
+---
+
+```bash
+ghci> let zoot x y z = x * y + z
+ghci> zoot 3 9 2
+29
+ghci> let boot x y z = x * y + z in boot 3 4 2
+14
+ghci> boot
+<interactive>:1:0: Not in scope: `boot'
+```
+
+The _in_ part can also be omitted when defining functions and constants directly in GHCi. If we do that, then the names will be visible throughout the entire interactive session.
+
+否则, 只是在局部可见
+
 ## case
 
 Oh yeah, pattern matching on parameters in function definitions! Well, that's actually just syntactic sugar for case expressions. These two pieces of code do the same thing and are interchangeable:
@@ -442,3 +460,121 @@ describeList xs = "The list is " ++ what xs
 ```
 
 ## indent
+
+## higher order function
+
+Haskell functions can take functions as parameters and return functions as return values. A function that does either of those is called a higher order function. Higher order functions aren't just a part of the Haskell experience, they pretty much are the Haskell experience. It turns out that if you want to define computations by defining what stuff is instead of defining steps that change some state and maybe looping them, higher order functions are indispensable. They're a really powerful way of solving problems and thinking about programs.
+
+## curry
+
+Haskell 所有的函数都是 curried function
+
+```hs
+max 4 5
+-- 5
+(max 4) 5
+-- 5
+```
+
+---
+
+curried function
+
+function application
+
+partially applied function
+
+---
+
+`->`具有右结合性
+
+right-associative
+
+```hs
+func :: a -> b -> a
+-- equals
+func :: a -> (b -> a)
+```
+
+---
+
+```hs
+-- myCompare :: Ord a => Bool -> a -> (a -> a)
+myCompare :: Ord a => Bool -> a -> a -> a
+myCompare b
+  | b         = max
+  | otherwise = min
+-- (myCompare True) 3 5
+myCompare True 3 5
+-- 5
+myCompare False 3 5
+-- 3
+```
+
+可以看到不需要使用括号
+
+?> 可以看作所有的函数只会接受一个参数, 只不过会返回函数, 然后继续接受参数, 形成一个调用链
+
+---
+
+infix
+
+```hs
+divByTen = (/10)
+divByTen 1
+-- 0.1
+inverse = (1/)
+inverse 2
+-- 0.5
+```
+
+---
+
+在 ghci 中接受 partially function, 需要用 let
+
+否则容易报错, 因为函数不是 Show 的 instance, 无法在 ghci 中显示
+
+---
+
+```hs
+flip' :: (a -> b -> c) -> (b -> a -> c)
+flip' f = g
+  where
+    g x y = f y x
+```
+
+We wrote that `g x y = f y x`. If that's true, then `f y x = g x y` must also hold, right? Keeping that in mind, we can define this function in an even simpler manner.
+
+```hs
+flip' :: (a -> b -> c) -> b -> a -> c
+flip' f y x = f x y
+```
+
+> `=`与数学的感觉是一样的, 意味着左右两边可以相互替换
+
+---
+
+map, filter
+
+```hs
+map f xs = [f x | x <- xs]
+filter p xs = [x | x <- xs, p x]
+```
+
+---
+
+```hs
+sum (takeWhile (<10000) [n^2 | n <- [1..], odd (n^2)])
+```
+
+lazy 的原因, 才可以这样使用无穷序列
+
+好处是, 不需要将`<10000`的条件映射到 n 层面, 一般的 imperative language 需要将 `n^2<10000`映射到到 n 上或者使用 break
+
+没有 lazy, 没有 infinite list, 很保留原来的条件
+
+## lambas
+
+```hs
+\x y -> x + y
+```
