@@ -5,3 +5,4 @@
 - [module](/docs/module.md)
 - [test](/docs/test.md)
 - [recursion](/docs/recursion.md)
+- [philosophy](/docs/philosophy.md)

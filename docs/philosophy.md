@@ -21,3 +21,16 @@ Haskell 在不断用函数丰富自己的词汇
 然后是, 使用 list comphrehension
 
 最后有了 partition 词汇
+
+---
+
+```hs
+dzScanl :: (a -> a -> a) -> a -> [a] -> [a]
+dzScanl f zero xs = foldl step [zero] xs
+  where
+    step acc x =
+      let prevAcc = last acc
+       in acc ++ [f prevAcc x]
+```
+
+想到 meta programming, decorate 模式, step 伪装成 f 被 foldl 调用, f 经过包装成 step 进行修改环境(context). 由此, 又想到 monad

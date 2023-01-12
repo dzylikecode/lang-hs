@@ -124,7 +124,10 @@ if-else is also an expression
 
 形如:
 
-$$f(x) = \begin{cases}x^2 & x \geq 0 \\-x^2 & x < 0 \end{cases}$$
+$$
+f(x) = \begin{cases}x^2 & x \geq 0 \\
+-x^2 & x < 0 \end{cases}
+$$
 
 ```hs
 f x =
@@ -578,3 +581,84 @@ lazy 的原因, 才可以这样使用无穷序列
 ```hs
 \x y -> x + y
 ```
+
+```hs
+addThree :: (Num a) => a -> a -> a -> a
+addThree = \x -> \y -> \z -> x + y + z
+```
+
+If we define a function like this, it's obvious why the type declaration is what it is. There are three `->`'s in both the type declaration and the equation.
+
+---
+
+I think that the `flip` function is the most readable when defined like so:
+
+```hs
+flip' :: (a -> b -> c) -> b -> a -> c
+flip' f = \x y -> f y x
+```
+
+更像是`(flip' f) x y`, 产生了一个新的函数进行调用
+
+So use lambdas in this way when you want to make it explicit that your function is mainly meant to be partially applied and passed on to a function as a parameter.
+
+## parentheses
+
+- getting rid of parentheses
+
+```hs
+($) :: (a -> b) -> a -> b
+f $ x = f x
+```
+
+It's just function application!
+
+Whereas normal function application (putting a space between two things) has a really high precedence, the `$` function has the lowest precedence.
+
+Function application with a space is left-associative (so `f a b c` is the same as `((f a) b) c))`, function application with `$` is right-associative.
+
+```hs
+sum $ map sqrt [1..130]
+-- equals
+sum (map sqrt [1..130])
+-------------------------
+sum $ filter (> 10) $ map (*2) [2..10]
+-- equals
+sum (filter (> 10) (map (*2) [2..10]))
+```
+
+---
+
+`$` means that function application can be treated just like another function
+
+```hs
+map ($ 3) [(4+), (10*), (^2), sqrt]
+-- [7.0,30.0,9.0,1.7320508075688772]
+```
+
+## composition
+
+$$( f \circ g ) ( x ) = f ( g ( x ) )$$
+
+```hs
+(.) :: (b -> c) -> (a -> b) -> a -> c
+f . g = \x -> f (g x)
+```
+
+```hs
+sum . replicate 5 . max 6.7 $ 8.9
+-- equals
+sum (replicate 5 (max 6.7 8.9))
+```
+
+函数的优先级最高(比任何 operator 都要高), 所以`replicate 5`会先结合, 成为 partially function
+
+---
+
+point free style (also called the pointless style)
+
+Many times, a point free style is more readable and concise, because it makes you think about functions and what kind of functions composing them results in instead of thinking about data and how it's shuffled around.
+
+However, many times, writing a function in point free style can be less readable if a function is too complex. That's why making long chains of function composition is discouraged
+
+The prefered style is to use let bindings to give labels to intermediary results or split the problem into sub-problems and then put it together so that the function makes sense to someone reading it instead of just making a huge composition chain.
