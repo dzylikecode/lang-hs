@@ -31,7 +31,7 @@ ghc-options:
   - -Wmissing-home-modules
   - -Wpartial-fields
   - -Wredundant-constraints
-  - -XImportQualifiedPost
+  # - -XImportQualifiedPost
 
 executables:
   snake:

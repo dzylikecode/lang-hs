@@ -22,6 +22,32 @@ Haskell 在不断用函数丰富自己的词汇
 
 最后有了 partition 词汇
 
+```hs
+quickSort :: (Ord a) => [a] -> [a]
+quickSort [] = []
+quickSort (x : xs) =
+  let smallerSorted = quickSort [a | a <- xs, a <= x]
+      biggerSorted = quickSort [a | a <- xs, a > x]
+   in smallerSorted ++ [x] ++ biggerSorted
+```
+
+```hs
+quickSort :: (Ord a) => [a] -> [a]
+quickSort [] = []
+quickSort (x : xs) =
+  let smallerSorted = quickSort (filter (<= x) xs)
+      biggerSorted = quickSort (filter (> x) xs)
+   in smallerSorted ++ [x] ++ biggerSorted
+```
+
+```hs
+quickSort :: (Ord a) => [a] -> [a]
+quickSort [] = []
+quickSort (x : xs) =
+  let (smaller, bigger) = partition (<= x) xs
+   in quickSort smaller ++ [x] ++ quickSort bigger
+```
+
 ---
 
 ```hs
