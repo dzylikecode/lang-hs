@@ -70,9 +70,95 @@ import Func
 
 `Func.hs` has to be in the same folder that the program that's importing it is in, though.
 
----
+### single file
+
+```txt
+.
+├── Geometry.hs
+└── main.hs
+```
+
+- `Geometry.hs`
+
+[Geometry.hs](../example/Learn_You_a_Haskell_for_Great_Good/modules/singleFile/Geometry.hs ":include :type=code hs")
+
+- `main.hs`
+
+[main.hs](../example/Learn_You_a_Haskell_for_Great_Good/modules/singleFile/main.hs ":include :type=code hs")
+
+- `package.yaml`
+
+```yaml
+executables:
+  singleFile:
+    source-dirs: modules/singleFile
+    main: main.hs
+    other-modules: Geometry
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+internal-libraries:
+  Geometry-SingleFile:
+    source-dirs: modules/singleFile
+    exposed-modules:
+      - Geometry
+    other-modules: []
+```
+
+### multiple files
 
 Modules can also be given a hierarchical structures.
+
+```txt
+.
+├── GeometryM
+│   ├── Cube.hs
+│   ├── Cuboid.hs
+│   └── Sphere.hs
+└── main.hs
+```
+
+- `Cube.hs`
+
+[Cube.hs](../example/Learn_You_a_Haskell_for_Great_Good/modules/multiFile/GeometryM/Cube.hs ":include :type=code hs")
+
+- `Cuboid.hs`
+
+[Cuboid.hs](../example/Learn_You_a_Haskell_for_Great_Good/modules/multiFile/GeometryM/Cuboid.hs ":include :type=code hs")
+
+- `Sphere.hs`
+
+[Sphere.hs](../example/Learn_You_a_Haskell_for_Great_Good/modules/multiFile/GeometryM/Sphere.hs ":include :type=code hs")
+
+- `main.hs`
+
+[main.hs](../example/Learn_You_a_Haskell_for_Great_Good/modules/multiFile/main.hs ":include :type=code hs")
+
+- `package.yaml`
+
+```yaml
+executables:
+  multiFile:
+    source-dirs: modules/multiFile
+    main: main.hs
+    other-modules:
+      - GeometryM.Cube
+      - GeometryM.Cuboid
+      - GeometryM.Sphere
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+internal-libraries:
+  Geometry-multiFile:
+    source-dirs: modules/multiFile
+    exposed-modules:
+      - GeometryM.Cube
+      - GeometryM.Cuboid
+      - GeometryM.Sphere
+    other-modules: []
+```
 
 ## stack
 
