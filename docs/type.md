@@ -88,6 +88,10 @@ A typeclass is a sort of interface that defines some behavior. If a type is a pa
 
 比如 ts 的 interface
 
+We explained that a typeclass is a sort of an interface that defines some behavior. A type can be made an instance of a typeclass if it supports that behavior. Example: the `Int` type is an instance of the `Eq` typeclass because the `Eq` typeclass defines behavior for stuff that can be equated.
+
+Typeclasses are more like interfaces. We don't make data from typeclasses. Instead, we first make our data type and then we think about what it can act like.
+
 ---
 
 ```hs
@@ -155,165 +159,114 @@ read "3":: Float
 
 `Num`
 
-## example
+### deriving
 
-### Char
-
-`'a'`
-
-### Bool
-
-|  C   | Haskell |
-| :--: | :-----: |
-| `!=` |  `/=`   |
-| `!`  |  `not`  |
-
-### list
-
-`[a]`
-
----
-
-a homogenous data structure
-
-同质的数据结构
-
-类似于 C++, 而不像 python, js
-
----
-
-字符串也是 list, 只不过是 syntactic sugar
-
----
-
-`++`: merge two list to one
+Haskell can derive the behavior of our types in these contexts if we use the _deriving_ keyword when making our data type.
 
 ```hs
-[1, 2] ++ [3, 4]
--- [1, 2, 3, 4]
+data Person = Person { firstName :: String
+                     , lastName :: String
+                     , age :: Int
+                     } deriving (Eq)
+```
+
+## type parameters
+
+A value constructor can take some values parameters and then produce a new value. For instance, the `Car` constructor takes three values and produces a car value. In a similar manner, **type constructors** can take types as parameters to produce new types.
+
+```hs
+data Point = Point Float Float deriving (Show)
+data Shape = Circle Point Float | Rectangle Point Point deriving (Show)
+```
+
+对类型进一步抽象
+
+```hs
+data Shape a = Circle a Float | Rectangle a a deriving (Show)
+```
+
+此时`Shape Point`相当于原来的`Shape`
+
+---
+
+Notice that the type of `Nothing` is `Maybe a`. Its type is polymorphic.
+
+just like `5` can act like an `Int` or a `Double`.
+
+---
+
+Using type parameters is very beneficial, but only when using them makes sense.
+
+```hs
+data Car = Car { company :: String
+               , model :: String
+               , year :: Int
+               } deriving (Show)
+tellCar :: Car -> String
+tellCar (Car {company = c, model = m, year = y}) = "This " ++ c ++ " " ++ m ++ " was made in " ++ show y
+```
+
+!> 过度的抽象
+
+```hs
+data Car a b c = Car { company :: a
+                     , model :: b
+                     , year :: c
+                     } deriving (Show)
+tellCar :: (Show a) => Car String String a -> String
+tellCar (Car {company = c, model = m, year = y}) = "This " ++ c ++ " " ++ m ++ " was made in " ++ show y
+```
+
+We'd have to force this function to take a `Car` type of `(Show a) => Car String String a`.
+
+---
+
+Having maps parameterized enables us to have mappings from any type to any other type, as long as the type of the key is part of the `Ord` typeclass. If we were defining a mapping type, we could add a typeclass constraint in the _data_ declaration:
+
+```hs
+data (Ord k) => Map k v = ...
+```
+
+However, it's a very strong convention in Haskell to **never add typeclass constraints in data declarations**.
+
+because we don't benefit a lot, but we end up writing more class constraints, even when we don't need them.
+
+If we put or don't put the `Ord k` constraint in the data declaration for `Map k v`, we're going to have to put the constraint into functions that assume the keys in a map can be ordered. But if we don't put the constraint in the data declaration, we don't have to put `(Ord k) =>` in the type declarations of functions that don't care whether the keys can be ordered or not. An example of such a function is `toList`, that just takes a mapping and converts it to an associative list. Its type signature is `toList :: Map k a -> [(k, a)]`. If `Map k v` had a type constraint in its data declaration, the type for `toList` would have to be `toList :: (Ord k) => Map k a -> [(k, a)]`, even though the function doesn't do any comparing of keys by order.
+
+> 让函数去约束
+
+## type synonyms
+
+they're just about giving some types different names so that they make more sense to someone reading our code and documentation.
+
+```hs
+type String = [Char]
+type PhoneBook = [(String,String)]
+phoneBook :: [(String,String)]
+phoneBook =
+    [("betty","555-2938")
+    ,("bonnie","452-2928")
+    ,("patsy","493-2928")
+    ,("lucille","205-2928")
+    ,("wendy","939-8282")
+    ,("penny","853-2492")
+    ]
 ```
 
 ---
 
-`:`: list constructor
+Type synonyms can also be parameterized.
 
 ```hs
-1 : [2, 3]
--- [1, 2, 3]
+type AssocList k v = [(k,v)]
 ```
 
-```hs
-[1, 2, 3]
--- syntatic sugar for
--- 1:2:3:[]
-```
+### partially
 
----
-
-`!!`: index to get element
-
-start at 0
+Just like we can partially apply functions to get new functions, we can partially apply type parameters and get new type constructors from them.
 
 ```hs
-[11, 3, 2] !! 1
--- 3
-```
-
----
-
-compare
-
-- `>=`
-- `>`
-- `=`
-
-类似于字符串之间的比较
-
----
-
-head
-
-tail
-
-init
-
-last
-
-...
-
-> 也许可以弄一个 API
-
----
-
-```hs
-[2,4..20]
+type IntMap = Map Int
 -- equals
-[2,4,6,8,10,12,14,16,18,20]
-```
-
-适用于等差数列
-
-枚举的子类: number, char
-
-!> 不要使用 float
-
----
-
-infinite list
-
-- circle
-- repeat
-
-由于 Haskell 的 lazy 性质
-
-```hs
-take 12 (cycle "LOL ")
--- "LOL LOL LOL "
-```
-
----
-
-形似:
-
-$$\{x^2 | x \in \mathbb{N}, x \leq 100\}$$
-
-```hs
-[ x | x <- [50..100], x `mod` 7 == 3]
--- [52,59,66,73,80,87,94]
-[ x*y | x <- [2,5,10], y <- [8,10,11]]
--- [16,20,22,40,50,55,80,100,110]
-[ func x y | x <- ls1, y <- ls2, expBool_1 x y, expBool_2 x y]
-```
-
-!> 生成的 x, y 是每种组合都有
-
-## tuple
-
-fixed length
-
-不必同质: They don't have to be homegenous
-
-```hs
-(3, "Hello")
-```
-
----
-
-不同长度就是不同类型
-
-不同内部类型就是不同类型
-
-特别的, `()`就是一种独一无二的类型
-
-!> there's no such thing as a singleton tuple
-
-`(a)` 仅仅就是计算一个表达式
-
----
-
-`zip`
-
-```hs
-zip [1..] [5, 5, 5]
--- [(1,5),(2,5),(3,5)]
+type IntMap v = Map Int v
 ```

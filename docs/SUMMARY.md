@@ -1,6 +1,7 @@
 - [:boat:](/docs/README.md)
 - [env](/docs/env.md)
 - [function](/docs/function.md)
+- [data](/docs/data.md)
 - [type](/docs/type.md)
 - [module](/docs/module.md)
 - [test](/docs/test.md)

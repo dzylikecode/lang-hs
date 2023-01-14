@@ -215,6 +215,10 @@ first triple
 let (_, x, _) = triple
 ```
 
+- [What is the difference between "destruction" and "deconstruction"? [closed]](https://english.stackexchange.com/questions/17263/what-is-the-difference-between-destruction-and-deconstruction#:~:text=Destruction%20is%20the%20act%20of,common%20word%20would%20be%20disassembly.))
+
+!> c++ 的析构函数
+
 ---
 
 对于 algebraic data type
