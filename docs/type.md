@@ -80,7 +80,7 @@ func:: Maybe a -> a
 
 Functions that have type variables are called **polymorphic functions**.
 
-## Typeclasses
+## typeclass
 
 A typeclass is a sort of interface that defines some behavior. If a type is a part of a typeclass, that means that it supports and implements the behavior the typeclass describes.
 
@@ -108,6 +108,108 @@ several class constraints
 
 ```hs
 fromIntegral :: (Num b, Integral a) => a -> b
+```
+
+### custom typeclass
+
+The behavior of typeclasses is achieved by defining functions or just type declarations that we then implement. So when we say that a type is an instance of a typeclass, we mean that we can use the functions that the typeclass defines with that type.
+
+```hs
+class Eq a where
+    (==) :: a -> a -> Bool
+    (/=) :: a -> a -> Bool
+    x == y = not (x /= y)
+    x /= y = not (x == y)
+```
+
+we're defining a new typeclass and that's called `Eq`.
+
+The `a` is the type variable and it means that `a` will play the role of the type that we will soon be making an instance of `Eq`.
+
+we define several functions. It's not mandatory to implement the function bodies themselves, we just have to specify the type declarations for the functions.
+
+Anyway, we _did_ implement the function bodies for the functions that `Eq` defines, only we defined them in terms of mutual recursion. We said that two instances of `Eq` are equal if they are not different and they are different if they are not equal.
+
+> 是通过 behavior 来描述 interface 的, 类似于数学的, 通过性质来判定某个概念
+
+---
+
+```hs
+data TrafficLight = Red | Yellow | Green
+instance Eq TrafficLight where
+    Red == Red = True
+    Green == Green = True
+    Yellow == Yellow = True
+    _ == _ = False
+```
+
+When we were defining `Eq`, we wrote `class Eq a where` and we said that `a` plays the role of whichever type will be made an instance later on. We can see that clearly here, because when we're making an instance, we write `instance Eq TrafficLight where`. We replace the `a` with the actual type.
+
+Because `==` was defined in terms of `/=` and vice versa in the class declaration, we only had to overwrite one of them in the instance declaration.
+
+?> 不知道 C++与 ts 有没有相同的效果
+
+---
+
+You can also make typeclasses that are subclasses of other typeclasses.
+
+```hs
+class (Eq a) => Num a where
+   ...
+```
+
+---
+
+```hs
+class Eq a where
+    (==) :: a -> a -> Bool
+    (/=) :: a -> a -> Bool
+    x == y = not (x /= y)
+    x /= y = not (x == y)
+```
+
+`a` in the type declaration indicates that the `a` has to be a concrete type instead of a type constructor
+
+```hs
+class Functor f where
+    fmap :: (a -> b) -> f a -> f b
+```
+
+`f`在 type signature 中说明, `f`是一个 type constructor
+
+---
+
+So this is just like writing `class Num a where`, only we state that our type `a` must be an instance of `Eq`. We're essentially saying that we have to make a type an instance of `Eq` before we can make it an instance of `Num`.
+
+此时感觉, 继承如同数学上的约束, 带来了限制, 也带来了性质
+
+---
+
+```hs
+class Eq a where
+    ...
+```
+
+!> the `a` has to be a concrete type instead of a type constructor
+
+这是通过 Eq 中函数 type signature 来约束的
+
+```hs
+instance Eq (Maybe m) where
+    Just x == Just y = x == y
+    Nothing == Nothing = True
+    _ == _ = False
+```
+
+!> `(==) :: (Eq m) => Maybe m -> Maybe m -> Bool`, 被定义在了 interface 当中
+
+`Just x == Just y = x == y`: We use `==` on the contents of the `Maybe` but we have no assurance that what the `Maybe` contains can be used with `Eq`!
+
+```hs
+instance (Eq m) => Eq (Maybe m) where
+    Just x == Just y = x == y
+    Nothing == Nothing = True
+    _ == _ = False
 ```
 
 ### example
@@ -169,6 +271,8 @@ data Person = Person { firstName :: String
                      , age :: Int
                      } deriving (Eq)
 ```
+
+> 自动生成 instance
 
 ## type parameters
 
@@ -270,3 +374,54 @@ type IntMap = Map Int
 -- equals
 type IntMap v = Map Int v
 ```
+
+## kind
+
+we'll take a look at formally defining how types are applied to type constructors, just like we took a look at formally defining how values are applied to functions by using type declarations.
+
+---
+
+Types are little labels that values carry so that we can reason about the values.
+
+```js
+{ "value": "hello", "label": String }
+```
+
+But types have their own little labels, called kinds. A kind is more or less the type of a type.
+
+```js
+{ "value": String, "label": * }
+```
+
+---
+
+```txt
+ghci> :k Int
+Int :: *
+```
+
+A `*` means that the type is a concrete type. A concrete type is a type that doesn't take any type parameters and values can only have types that are concrete types.
+
+```hs
+ghci> :k Maybe Int
+Maybe Int :: *
+```
+
+---
+
+```txt
+ghci> :k Maybe Int
+Maybe Int :: *
+```
+
+`* -> *` means that the type constructor takes one concrete type and returns a concrete type.
+
+---
+
+由`Functor`的 interface 知, 对于`data Barry a b m`
+
+```hs
+fmap :: (m -> n) -> Barry a b m -> Barry a b n
+```
+
+> 利用一下 partially

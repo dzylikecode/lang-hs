@@ -239,7 +239,7 @@ int main() {
 }
 ```
 
----
+### record syntax
 
 ```hs
 data Person = Person { firstName :: String
@@ -306,3 +306,102 @@ nudge (Rectangle (Point x1 y1) (Point x2 y2)) a b = Rectangle (Point (x1+a) (y1+
 ```
 
 We could also opt not to export any value constructors for `Shape` by just writing `Shape` in the export statement. That way, someone importing our module could only make shapes by using the auxilliary functions `baseCircle` and `baseRect`. `Data.Map` uses that approach.
+
+## recursive data structures
+
+```hs
+data Shape = Circle Point Float | Rectangle Point Point deriving (Show)
+
+```
+
+`Point`可以换成任意的类型, 特别的有`Shape`类型, 形成递归结构
+
+```hs
+data Shape = Circle Shape Float | Rectangle Point Point deriving (Show)
+```
+
+---
+
+```hs
+data ShapeA a = Circle a Float | Rectangle a a deriving (Show)
+```
+
+`a`可以换成任意的类型, 特别的有`ShapeA a`类型, 形成递归结构
+
+```hs
+data ShapeA a = Circle (ShapeA a) Float | Rectangle Point Point deriving (Show)
+```
+
+---
+
+list 即是一种递归结构
+
+```hs
+data List a = Empty | Cons a (List a) deriving (Show, Read, Eq, Ord)
+-- record syntax
+data List a = Empty | Cons { listHead :: a, listTail :: List a} deriving (Show, Read, Eq, Ord)
+3 `Cons` (4 `Cons` (5 `Cons` Empty))
+-- Cons 3 (Cons 4 (Cons 5 Empty))
+3:(4:(5:6:[]))
+-- 3:4:5:6:[]
+-- [3,4,5,6]
+```
+
+很像 linked list, 可以认为 linked list 与 list 在数学的定义是一样的, 只不过物理实现方式不同
+
+We can define functions to be automatically infix by making them comprised of only special characters.
+
+> 仿照内部定义`:`
+
+```hs
+infixr 5 :-:
+data List a = Empty | a :-: (List a) deriving (Show, Read, Eq, Ord)
+```
+
+---
+
+```hs
+infixr 5  ++
+(++) :: [a] -> [a] -> [a]
+[]     ++ ys = ys
+(x:xs) ++ ys = x : (xs ++ ys)
+```
+
+`++`也是用归纳定义的
+
+---
+
+```hs
+data Tree a = EmptyTree | Node a (Tree a) (Tree a) deriving (Show, Read, Eq)
+```
+
+- a function that takes a tree and an element and inserts an element:
+
+  In languages like C, we'd do this by modifying the pointers and values inside the tree. In Haskell, we can't really modify our tree, so we have to make a new sub-tree each time we decide to go left or right and in the end the insertion function returns a completely new tree, because Haskell doesn't really have a concept of pointer, just values.
+
+  This might seem like it's inefficient but laziness takes care of that problem.
+
+```hs
+singleton :: a -> Tree a
+singleton x = Node x EmptyTree EmptyTree
+
+treeInsert :: (Ord a) => a -> Tree a -> Tree a
+treeInsert x EmptyTree = singleton x
+treeInsert x (Node a left right)
+    | x == a = Node x left right
+    | x < a  = Node a (treeInsert x left) right
+    | x > a  = Node a left (treeInsert x right)
+```
+
+`singleton` 与 monad 的`return`类似
+
+---
+
+```hs
+let nums = [8,6,4,1,7,3,5]
+let numsTree = foldr treeInsert EmptyTree nums
+```
+
+非常有意思, `treeInsert`恰好是一个`foldr`的`f`
+
+`treeInsert` was the folding function
