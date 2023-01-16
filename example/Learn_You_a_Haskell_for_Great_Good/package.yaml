@@ -52,6 +52,17 @@ executables:
       - -threaded
       - -rtsopts
       - -with-rtsopts=-N
+  queryAvailableLocker:
+    source-dirs: Making_Our_Own_Types_and_Typeclasses/queryAvailableLocker
+    main: main.hs
+    # other-extensions:
+    #   - ImportQualifiedPost
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - containers
 
 internal-libraries:
   Geometry-SingleFile:

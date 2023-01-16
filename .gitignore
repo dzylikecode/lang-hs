@@ -6,3 +6,4 @@ temp
 *~
 stack.yaml.lock
 *.cabal
+dist-newstyle/
