@@ -78,6 +78,16 @@ func:: Maybe a -> a
 
 ---
 
+```hs
+putStrLn :: String -> IO ()
+```
+
+> The empty tuple is a value of `()` and it also has a type of `()`.
+
+`IO` is a type constructor, `()` is a concrete type. And `IO ()` is a concrete type.
+
+---
+
 Functions that have type variables are called **polymorphic functions**.
 
 ## typeclass

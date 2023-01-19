@@ -60,3 +60,15 @@ dzScanl f zero xs = foldl step [zero] xs
 ```
 
 想到 meta programming, decorate 模式, step 伪装成 f 被 foldl 调用, f 经过包装成 step 进行修改环境(context). 由此, 又想到 monad
+
+---
+
+For instance, when we were making a binary search tree, we didn't insert an element into a tree by modifying some tree in place. Our function for inserting into a binary search tree actually returned a new tree, because it can't change the old one.
+
+---
+
+多态也是抽象的表现
+
+---
+
+All languages have procedures, functions, and pieces of code that might fail in some way. That's just a fact of life.
