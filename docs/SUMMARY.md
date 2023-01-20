@@ -10,3 +10,4 @@
 - [recursion](/docs/recursion.md)
 - [philosophy](/docs/philosophy.md)
 - [functor](/docs/functor.md)
+- [applicative](/docs/applicative.md)

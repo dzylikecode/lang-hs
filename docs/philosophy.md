@@ -72,3 +72,17 @@ For instance, when we were making a binary search tree, we didn't insert an elem
 ---
 
 All languages have procedures, functions, and pieces of code that might fail in some way. That's just a fact of life.
+
+---
+
+Haskell's combination of purity, higher order functions, parameterized algebraic data types, and typeclasses allows us to implement polymorphism on a much higher level than possible in other languages. We don't have to think about types belonging to a big hierarchy of types.
+
+Typeclasses are open, which means that we can define our own data type, think about what it can act like and connect it with the typeclasses that define its behaviors. Because of that and because of Haskell's great type system that allows us to know a lot about a function just by knowing its type declaration, we can define typeclasses that define behavior that's very general and abstract.
+
+发现 polymorphism 和 functor 是很像的
+
+```hs
+fmap:: (a -> b) -> f a -> f b
+```
+
+只需要定义`a -> b`, 对`f a -> f b`都适用
