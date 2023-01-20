@@ -11,3 +11,4 @@
 - [philosophy](/docs/philosophy.md)
 - [functor](/docs/functor.md)
 - [applicative](/docs/applicative.md)
+- [monad](/docs/monad.md)

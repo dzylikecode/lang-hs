@@ -51,6 +51,10 @@ in 2 [2, 3]
 
 ---
 
+The `(,,)` function is the same as `\x y z -> (x,y,z)`. Also, the `(,)` function is the same as `\x y -> (x,y)`.
+
+---
+
 函数有最高的优先级
 
 the highest precedence

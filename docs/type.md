@@ -385,6 +385,34 @@ type IntMap = Map Int
 type IntMap v = Map Int v
 ```
 
+## newtype
+
+```hs
+data ZipList a = ZipList { getZipList :: [a] }
+-- equals
+newtype ZipList a = ZipList { getZipList :: [a] }
+```
+
+The _newtype_ keyword in Haskell is made exactly for these cases when we want to just take one type and wrap it in something to present it as another type.
+
+---
+
+_newtype_ is faster. If you use the _data_ keyword to wrap a type, there's some overhead to all that wrapping and unwrapping when your program is running. But if you use newtype, Haskell knows that you're just using it to wrap an existing type into a new type (hence the name), because you want it to be the same internally but have a different type.
+
+---
+
+局限:
+
+When using _newtype_, you're restricted to just one constructor with one field.
+
+---
+
+```hs
+newtype Pair b a = Pair { getPair :: (a,b) }
+```
+
+调换 curry 的顺序
+
 ## kind
 
 we'll take a look at formally defining how types are applied to type constructors, just like we took a look at formally defining how values are applied to functions by using type declarations.
