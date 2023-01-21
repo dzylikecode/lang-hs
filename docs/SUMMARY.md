@@ -12,3 +12,4 @@
 - [functor](/docs/functor.md)
 - [applicative](/docs/applicative.md)
 - [monad](/docs/monad.md)
+- [monoid](/docs/monoid.md)
