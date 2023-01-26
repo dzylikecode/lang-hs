@@ -488,6 +488,33 @@ f <=< g = (\x -> g x >>= f)
   (f <=< g) <=< h = f <=< (g <=< h)
   ```
 
+---
+
+Anyway, we can compose monadic functions in the same way, only instead normal composition we use `<=<` and instead of `id` we use `return`.
+
+## compose
+
+```txt
+ghci> let f = foldr (.) id [(+1),(*100),(+1)]
+ghci> f 1
+201
+```
+
+类似的
+
+```hs
+import Data.List
+
+inMany :: Int -> KnightPos -> [KnightPos]
+inMany x start = return start >>= moveX
+  where
+    moveX =
+      foldr
+        (<=<)
+        return
+        (replicate x moveKnight)
+```
+
 ## stateful computation
 
 ```hs
@@ -839,3 +866,9 @@ Just 14
 ghci> foldM binSmalls 0 [2,11,3,1]
 Nothing
 ```
+
+## application
+
+We don't usually set out to make a monad with the sole purpose of making a monad. Instead, we usually make a type that whose purpose is to model an aspect of some problem and then later on if we see that the type represents a value with a context and can act like a monad, we give it a `Monad` instance.
+
+!> 不是为了 monad 而 monad. If all you have is a hammer, everything looks like a nail.

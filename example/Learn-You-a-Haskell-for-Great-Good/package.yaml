@@ -72,6 +72,15 @@ executables:
       - -with-rtsopts=-N
     dependencies:
       - directory
+  RPN:
+    source-dirs: for-a-few-monads-more/RPN
+    main: main.hs
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    # dependencies:
+    #   - Data
 
 internal-libraries:
   Geometry-SingleFile:
