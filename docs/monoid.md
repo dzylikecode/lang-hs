@@ -185,3 +185,9 @@ instance F.Foldable Tree where
 ```hs
 getAny $ F.foldMap (\x -> Any $ x > 15) testTree
 ```
+
+## reference
+
+- [A monad is just a monoid in the category of endofunctors, what's the problem?](https://stackoverflow.com/questions/3870088/a-monad-is-just-a-monoid-in-the-category-of-endofunctors-whats-the-problem)
+
+  ?> A monad is just a monoid in the category of endofunctors

@@ -90,3 +90,17 @@ fmap:: (a -> b) -> f a -> f b
 ---
 
 monad, 各司其职, 对 IO, 就是对 IO 进行操作, 把外界看作一个思考的对象, 而不与其他 int 等混合在一起
+
+---
+
+将 side effect 抽象为 monad, 使得核心代码更为集中, 更为抽象通用, 易于扩展
+
+```txt
+ghci> mapM_ putStrLn $ snd $ runWriter $ filterM keepSmall [9,1,5,2,10,3]
+9 is too large, throwing it away
+Keeping 1
+5 is too large, throwing it away
+Keeping 2
+10 is too large, throwing it away
+Keeping 3
+```

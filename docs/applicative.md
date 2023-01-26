@@ -2,6 +2,12 @@
 
 对多元函数和 curry 宽泛的思考
 
+已经被映射到另一个范畴的函数
+
+what if that function `a -> b` is already wrapped inside a functor value?
+
+---
+
 ```hs
 fmap (*) (Just 3)
 -- Just ((*) 3)

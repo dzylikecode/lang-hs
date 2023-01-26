@@ -67,3 +67,65 @@ One big difference is that right folds work on infinite lists, whereas left ones
 ---
 
 `scanl` and `scanr` are like foldl and foldr, only they report all the intermediate accumulator states in the form of a list.
+
+---
+
+`a ++ (b ++ (c ++ (d ++ (e ++ f))))` 比下面更有效
+
+`((((a ++ b) ++ c) ++ d) ++ e) ++ f`
+
+```hs
+import Control.Monad.Writer
+
+gcdReverse :: Int -> Int -> Writer [String] Int
+gcdReverse a b
+  | b == 0 = do
+      tell ["Finished with " ++ show a]
+      return a
+  | otherwise = do
+      result <- gcdReverse b (a `mod` b)
+      tell [show a ++ " mod " ++ show b ++ " = " ++ show (a `mod` b)]
+      return result
+```
+
+属于第二种, 如何变成第一种
+
+```hs
+import Control.Monad.Writer
+
+newtype DiffList a = DiffList {getDiffList :: [a] -> [a]}
+
+toDiffList :: [a] -> DiffList a
+toDiffList xs = DiffList (xs ++)
+
+fromDiffList :: DiffList a -> [a]
+fromDiffList (DiffList f) = f []
+
+instance Monoid (DiffList a) where
+  mempty = DiffList (\xs -> [] ++ xs)
+  (DiffList f) `mappend` (DiffList g) = DiffList (\xs -> f (g xs))
+
+gcd' :: Int -> Int -> Writer (DiffList String) Int
+gcd' a b
+  | b == 0 = do
+      tell (toDiffList ["Finished with " ++ show a])
+      return a
+  | otherwise = do
+      result <- gcd' b (a `mod` b)
+      tell (toDiffList [show a ++ " mod " ++ show b ++ " = " ++ show (a `mod` b)])
+      return result
+```
+
+> `fromDiffList`的概念非常有意思
+
+无论 `a ++ (b ++ (c ++ (d ++ (e ++ f))))` 还是 `((((a ++ b) ++ c) ++ d) ++ e) ++ f` 都可以抽象为`f (g (h (i (j id))))`
+
+- `a ++ (b ++ (c ++ (d ++ (e ++ f))))`
+
+  `f(g x)` 为 `a ++ rest`
+
+- `((((a ++ b) ++ c) ++ d) ++ e) ++ f`
+
+  `f(g x)` 为 `rest ++ a`
+
+用`id`作为初始值
