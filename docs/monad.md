@@ -872,3 +872,5 @@ Nothing
 We don't usually set out to make a monad with the sole purpose of making a monad. Instead, we usually make a type that whose purpose is to model an aspect of some problem and then later on if we see that the type represents a value with a context and can act like a monad, we give it a `Monad` instance.
 
 !> 不是为了 monad 而 monad. If all you have is a hammer, everything looks like a nail.
+
+参考示例: <a class="Repos" target="_blank" href="../example/Learn-You-a-Haskell-for-Great-Good/for-a-few-monads-more/coin">coin</a>

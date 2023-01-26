@@ -33,3 +33,7 @@ leet code 解题时, 自己反应缓慢, Haskell 不是很好用的现实问题�
 ---
 
 https://wiki.haskell.org/All_About_Monads
+
+---
+
+很不错的项目: https://lhbg-book.link/

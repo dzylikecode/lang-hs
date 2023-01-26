@@ -119,11 +119,11 @@ Not exporting the value constructors of a data types makes them more abstract in
 
 - `Geometry.hs`
 
-[Geometry.hs](../example/Learn_You_a_Haskell_for_Great_Good/modules/singleFile/Geometry.hs ":include :type=code hs")
+[Geometry.hs](../example/Learn-You-a-Haskell-for-Great-Good/modules/singleFile/Geometry.hs ":include :type=code hs")
 
 - `main.hs`
 
-[main.hs](../example/Learn_You_a_Haskell_for_Great_Good/modules/singleFile/main.hs ":include :type=code hs")
+[main.hs](../example/Learn-You-a-Haskell-for-Great-Good/modules/singleFile/main.hs ":include :type=code hs")
 
 - `package.yaml`
 
@@ -160,19 +160,19 @@ Modules can also be given a hierarchical structures.
 
 - `Cube.hs`
 
-[Cube.hs](../example/Learn_You_a_Haskell_for_Great_Good/modules/multiFile/GeometryM/Cube.hs ":include :type=code hs")
+[Cube.hs](../example/Learn-You-a-Haskell-for-Great-Good/modules/multiFile/GeometryM/Cube.hs ":include :type=code hs")
 
 - `Cuboid.hs`
 
-[Cuboid.hs](../example/Learn_You_a_Haskell_for_Great_Good/modules/multiFile/GeometryM/Cuboid.hs ":include :type=code hs")
+[Cuboid.hs](../example/Learn-You-a-Haskell-for-Great-Good/modules/multiFile/GeometryM/Cuboid.hs ":include :type=code hs")
 
 - `Sphere.hs`
 
-[Sphere.hs](../example/Learn_You_a_Haskell_for_Great_Good/modules/multiFile/GeometryM/Sphere.hs ":include :type=code hs")
+[Sphere.hs](../example/Learn-You-a-Haskell-for-Great-Good/modules/multiFile/GeometryM/Sphere.hs ":include :type=code hs")
 
 - `main.hs`
 
-[main.hs](../example/Learn_You_a_Haskell_for_Great_Good/modules/multiFile/main.hs ":include :type=code hs")
+[main.hs](../example/Learn-You-a-Haskell-for-Great-Good/modules/multiFile/main.hs ":include :type=code hs")
 
 - `package.yaml`
 
