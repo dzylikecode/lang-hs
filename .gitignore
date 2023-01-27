@@ -1,4 +1,4 @@
-.vscode/
+.vscode/settings.json
 temp
 # stack binaries
 .stack-work/
@@ -7,3 +7,4 @@ temp
 stack.yaml.lock
 *.cabal
 dist-newstyle/
+bin

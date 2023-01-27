@@ -145,6 +145,23 @@ internal-libraries:
     other-modules: []
 ```
 
+也可以不需要
+
+```hs
+internal-libraries:
+  Geometry-SingleFile:
+    source-dirs: modules/singleFile
+    exposed-modules:
+      - Geometry
+    other-modules: []
+```
+
+同一文件夹下可以找到, 直接
+
+```hs
+import Geometry
+```
+
 ### multiple files
 
 Modules can also be given a hierarchical structures.
@@ -198,3 +215,13 @@ internal-libraries:
       - GeometryM.Sphere
     other-modules: []
 ```
+
+> 觉得也可以不需要`internal`, internal 是为了给其他文件夹下用的
+
+```hs
+import GeometryM.Cube
+```
+
+本来就会在当前文件夹下找
+
+也可以注意`source-dirs`, 这个可以是个列表, 增大搜索范围

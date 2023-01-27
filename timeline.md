@@ -36,4 +36,8 @@ https://wiki.haskell.org/All_About_Monads
 
 ---
 
+2022/01/25 整理完成[Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters)
+
+## Learn Haskell by building a blog generator
+
 很不错的项目: https://lhbg-book.link/

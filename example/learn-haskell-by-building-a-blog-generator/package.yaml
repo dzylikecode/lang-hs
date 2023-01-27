@@ -1,0 +1,47 @@
+name: learn-haskell-by-building-a-blog-generator
+version: 0.1.0.0
+github: "dzylikecode/lang-hs"
+license: BSD3
+author: "Dz"
+maintainer: "MathBeWithCode@gmail.com"
+copyright: "Copyright (c) 2022 Dz"
+
+extra-source-files:
+  - README.md
+
+dependencies:
+  - base >= 4.7 && < 5
+
+ghc-options:
+  - -Wall
+  - -Wcompat
+  - -Widentities
+  - -Wincomplete-record-updates
+  - -Wincomplete-uni-patterns
+  - -Wmissing-export-lists
+  - -Wmissing-home-modules
+  - -Wpartial-fields
+  - -Wredundant-constraints
+
+executables:
+  ex00:
+    main: main.hs
+    source-dirs: ex00
+  ex01:
+    main: main.hs
+    source-dirs: ex01
+  ex02:
+    main: main.hs
+    source-dirs: ex02
+  ex03:
+    main: main.hs
+    source-dirs: ex03
+  ex04:
+    main: main.hs
+    source-dirs: ex04
+  ex05:
+    main: main.hs
+    source-dirs: ex05
+  ex06:
+    main: main.hs
+    source-dirs: ex06
