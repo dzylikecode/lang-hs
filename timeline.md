@@ -41,3 +41,9 @@ https://wiki.haskell.org/All_About_Monads
 ## Learn Haskell by building a blog generator
 
 很不错的项目: https://lhbg-book.link/
+
+## princeton course
+
+https://www.cs.princeton.edu/~dpw/cos441-11/index.html
+
+schedule: https://www.cs.princeton.edu/~dpw/cos441-11/schedule.htm

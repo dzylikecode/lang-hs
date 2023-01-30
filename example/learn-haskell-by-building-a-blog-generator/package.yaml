@@ -45,3 +45,12 @@ executables:
   ex06:
     main: main.hs
     source-dirs: ex06
+  ex07:
+    main: main.hs
+    source-dirs: ex07
+  ex08:
+    main: main.hs
+    source-dirs: ex08
+  ex09:
+    main: main.hs
+    source-dirs: ex09

@@ -7,9 +7,16 @@ function hs(){
     echo "--------------------------$1------------------------------------"
     run $1
 }
-
+bin=./bin
 # browser
 function bs(){
     hs $1
-    run $1 > ./bin/output.html
+    if [ ! -d "$bin" ]; then
+        echo "$bin does not exist."
+        mkdir $bin
+        echo "create $bin"
+    fi
+    run $1 > $bin/output.html
+    echo "--------------------------$1------------------------------------"
+    echo "the output is in $bin/output.html"
 }

@@ -225,3 +225,23 @@ import GeometryM.Cube
 本来就会在当前文件夹下找
 
 也可以注意`source-dirs`, 这个可以是个列表, 增大搜索范围
+
+### internal
+
+```txt
+.
+├── Html
+│   └── Internal.hs
+├── Html.hs
+├── README.md
+└── main.hs
+```
+
+```yaml
+executables:
+  ex07:
+    main: main.hs
+    source-dirs: ex07
+```
+
+[Html.hs](../example/learn-haskell-by-building-a-blog-generator/ex07/Html.hs ":include :type=code hs")
