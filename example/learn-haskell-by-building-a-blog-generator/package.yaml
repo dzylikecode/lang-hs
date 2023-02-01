@@ -54,3 +54,6 @@ executables:
   ex09:
     main: main.hs
     source-dirs: ex09
+  ex10:
+    main: main.hs
+    source-dirs: ex10

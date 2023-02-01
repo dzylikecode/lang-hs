@@ -47,3 +47,17 @@ https://wiki.haskell.org/All_About_Monads
 https://www.cs.princeton.edu/~dpw/cos441-11/index.html
 
 schedule: https://www.cs.princeton.edu/~dpw/cos441-11/schedule.htm
+
+简化学习, 记录一些关键的东西, 广泛地接触, 学习, 然后深入地思考
+
+先按照课程的学习来记录, 最后回过头来重新总结
+
+不同时间段的布局
+
+## todo
+
+https://haskell-via-sokoban.nomeata.de/
+
+https://www.haskell.org/documentation/
+
+https://github.com/soupi/haskell-study-plan#about-this-guide

@@ -36,3 +36,22 @@ We pass the new lines to be grouped in a paragraph **in reverse order** because 
 用 Maybe 考虑
 
 [](parse02.hs ":include :type=code hs")
+
+> Hoogle `maybe`
+
+`(4)` append 会比较缓慢, 可以使用新的结构来储存
+
+```hs
+data Context
+  = CtxHeading Natural String
+  | CtxParagraph [String]
+  | CtxUnorderedList [String]
+  | CtxOrderedList [String]
+  | CtxCodeBlock [String]
+```
+
+> 之后再来优化
+
+## 扩展
+
+[](parse03.hs ":include :type=code hs")
