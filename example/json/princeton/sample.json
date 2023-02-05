@@ -1,0 +1,13 @@
+{
+  "name": "Ranjit",
+  "age": 33,
+  "likes": ["guacamole", "coffee", "bacon"],
+  "hates": ["waiting", "grapefruit"],
+  "lunches": [
+    { "day": "monday", "loc": "zanzibar" },
+    { "day": "tuesday", "loc": "farmers market" },
+    { "day": "wednesday", "loc": "harekrishna" },
+    { "day": "thursday", "loc": "faculty club" },
+    { "day": "friday", "loc": "coffee cart" }
+  ]
+}

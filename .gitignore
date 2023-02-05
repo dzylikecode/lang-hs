@@ -8,3 +8,4 @@ stack.yaml.lock
 *.cabal
 dist-newstyle/
 bin
+third_lib

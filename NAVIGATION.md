@@ -1,3 +1,5 @@
 - [:house:](https://dzylikecode.github.io/#/)
 - [:boat:](/)
 - [$\lambda$](/docs/)
+- :book:
+  - [Princeton](/Princeton/)

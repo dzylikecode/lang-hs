@@ -17,3 +17,7 @@ This also makes it easier to see why we call this a zipper, because this really 
 ---
 
 结合 maybe, monad
+
+---
+
+file system, 是由一个系统变换到另一个系统

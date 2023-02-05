@@ -1,0 +1,24 @@
+name: Princeton
+version: 0.1.0.0
+github: "dzylikecode/lang-hs"
+license: BSD3
+author: "Dz"
+maintainer: "MathBeWithCode@gmail.com"
+copyright: "Copyright (c) 2022 Dz"
+
+dependencies:
+  - base >= 4.7 && < 5
+  - GLFW-b
+  - OpenGL
+  - old-time
+  - stm
+ghc-options:
+  - -Wall
+  - -Wcompat
+  - -Widentities
+  - -Wincomplete-record-updates
+  - -Wincomplete-uni-patterns
+  - -Wmissing-export-lists
+  - -Wmissing-home-modules
+  - -Wpartial-fields
+  - -Wredundant-constraints

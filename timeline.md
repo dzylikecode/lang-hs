@@ -1,5 +1,7 @@
 # TimeLine
 
+## 2023
+
 ## Learn You a Haskell for Great Good!
 
 2022/01/02 - 2022/01/09
@@ -54,6 +56,12 @@ schedule: https://www.cs.princeton.edu/~dpw/cos441-11/schedule.htm
 
 不同时间段的布局
 
+---
+
+计划每天看一章
+
+1/31 wk1
+
 ## todo
 
 https://haskell-via-sokoban.nomeata.de/
@@ -61,3 +69,7 @@ https://haskell-via-sokoban.nomeata.de/
 https://www.haskell.org/documentation/
 
 https://github.com/soupi/haskell-study-plan#about-this-guide
+
+## 2-3
+
+接触到图形, gloss, 里面的 example 有的好震撼啊

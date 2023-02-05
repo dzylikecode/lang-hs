@@ -8,7 +8,9 @@ function hs(){
     run $1
 }
 bin=./bin
+##############################################################################
 # browser
+# eg. bs ex07
 function bs(){
     hs $1
     if [ ! -d "$bin" ]; then
