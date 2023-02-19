@@ -6,9 +6,13 @@ Princeton course
 
 - [schedule](https://www.cs.princeton.edu/~dpw/cos441-11/schedule.htm)
 
+## project
+
+- [A domain-specific language for computing with financial contracts](https://rucore.libraries.rutgers.edu/rutgers-lib/23837/PDF/1/play/)
+
 ## issue
 
-failed, 没有解决
+!> failed, 没有解决
 
 合理的
 

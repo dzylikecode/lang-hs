@@ -2,25 +2,6 @@
 
 ## application
 
-调用
-
-用空格分开参数
-
-```hs
-func arg1 arg2 arg3
-```
-
-!> parentheses are unnecessary to denote function application. Don't confuse it with C notation.
-
-```hs
-bar (bar 3)
--- equals
-x = bar 3
-bar x
-```
-
----
-
 对于二元运算
 
 - `prefex`
@@ -35,19 +16,7 @@ bar x
   arg1 `func` arg2
   ```
 
-  ?> If a function is comprised only of special characters, it's considered an infix function by default. If we want to examine its type, pass it to another function or call it as a prefix function, we have to surround it in parentheses.
-
-example:
-
-```hs
-2 + 3
--- the same as
-(+) 2 3
--------------
-in 2 [2, 3]
--- the infex style has better readibility
-2 `in` [2, 3]
-```
+?> If a function is comprised only of special characters, it's considered an infix function by default. If we want to examine its type, pass it to another function or call it as a prefix function, we have to surround it in parentheses.
 
 ---
 
@@ -59,39 +28,12 @@ The `(,,)` function is the same as `\x y z -> (x,y,z)`. Also, the `(,)` function
 
 the highest precedence
 
-```hs
-succ 9 * 10
--- equals
-(succ 9) * 10
-```
-
 ## definition
-
-```hs
--- definition
-f x = x*x
--- application
-f 3
--- 9
-```
-
----
 
 infix
 
 ```hs
 x `myPlus` y = x + y
-```
-
----
-
-函数的先后顺序不重要
-
-```hs
--- the order of the function application does not matter
--- call `square` before it's definition
-length x y = sqrt (square x + square y)
-square x = x * x
 ```
 
 ### name
@@ -109,18 +51,6 @@ mark'book = "math"
 ### All is expression
 
 表达式形式
-
-形如
-
-$$f(x)= x^2$$
-
-```hs
--- definition
-f x = x*x
--- application
-f 3
--- 9
-```
 
 ---
 

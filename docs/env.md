@@ -39,6 +39,8 @@ export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 ghcup tui
 ```
 
+通过`ghcup set --help`可以设置默认的 stack, hls 等
+
 ## uninstall
 
 ```bash
@@ -133,3 +135,5 @@ import Control.Concurrent.Async
 推荐参考
 
 - repos: https://github.com/bravit/hid-examples
+
+## vim
