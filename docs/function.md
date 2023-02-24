@@ -1,5 +1,12 @@
 # function
 
+## operator
+
+precedence and associativity, fixity rules
+
+- infixr 8: right-associative, has precedence 8 (higher)
+- infixl 7: left-associative, has precedence 7
+
 ## application
 
 对于二元运算

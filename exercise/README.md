@@ -2,6 +2,8 @@
 
 for **Real World Haskell**
 
+- link: https://book.realworldhaskell.org/read/
+
 ## reference
 
 - 2018 [Real World Haskell exercise](https://github.com/Vincibean/real-world-haskell)

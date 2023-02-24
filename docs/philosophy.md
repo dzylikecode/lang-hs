@@ -104,3 +104,34 @@ Keeping 2
 10 is too large, throwing it away
 Keeping 3
 ```
+
+---
+
+laziness 适合作合理的假设
+
+`thunk`, 使用 substitute 去理解
+
+---
+
+```c
+int as_int(char *str)
+{
+  int acc; /* accumulate the partial result */
+
+  for (acc = 0; isdigit(*str); str++) {
+    acc = acc * 10 + (*str - '0');
+  }
+
+  return acc;
+}
+```
+
+```hs
+loop :: Int -> String -> Int
+
+asInt xs = loop 0 xs
+```
+
+Rather than leap into blazing code, let's think about the data we have to work with.
+
+将每个部分划分为函数进行思考

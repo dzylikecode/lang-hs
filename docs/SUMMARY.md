@@ -1,5 +1,6 @@
 - [:boat:](/docs/README.md)
 - [env](/docs/env.md)
+- [GHC](/docs/GHC.md)
 - [style](/docs/style.md)
 - [function](/docs/function.md)
 - [data](/docs/data.md)
