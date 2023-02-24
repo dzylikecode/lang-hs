@@ -9,6 +9,9 @@ GHC has three main components.
 ## installation
 
 - [Installation](https://www.haskell.org/ghcup/install/#how-to-install)
+
+  !> notice to read system requirements
+
 - [Appendix A. Installing GHC and Haskell libraries](https://book.realworldhaskell.org/read/installing-ghc-and-haskell-libraries.html)
 
 [Installing GHCup vs vanilla GHC for haskell](https://stackoverflow.com/questions/72056777/installing-ghcup-vs-vanilla-ghc-for-haskell) 推荐第一个 GHCup
@@ -137,3 +140,5 @@ import Control.Concurrent.Async
 - repos: https://github.com/bravit/hid-examples
 
 ## vim
+
+- hlint

@@ -3,3 +3,4 @@
 - [$\lambda$](/docs/)
 - :book:
   - [Princeton](/Princeton/)
+- [:butterfly:](/diving/)
