@@ -9,3 +9,7 @@ stack.yaml.lock
 dist-newstyle/
 bin
 third_lib
+# Haskell binaries
+*.o
+*.hi
+.obsidian/

@@ -70,6 +70,10 @@ import Func
 
 `Func.hs` has to be in the same folder that the program that's importing it is in, though.
 
+It is followed by the name of the module, which must begin with a capital letter. A source file must have the same base name (the component before the suffix) as the name of the module it contains. This is why our file `SimpleJSON.hs` contains a module named `SimpleJSON`.
+
+!> 没有括号将导出全部, 括号可以看作是 tuple
+
 ---
 
 ```hs

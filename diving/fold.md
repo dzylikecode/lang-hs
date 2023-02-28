@@ -193,4 +193,6 @@ foldr step zero (x:xs) = x `step` (foldr step zero xs)
 foldr _    zero []     = zero
 ```
 
-利用$?$去假设$\text{acc}=x >> ? = x >> (x' >> ?)$, 从左往右不断递推下去
+利用未知量$?$去假设$\text{acc}=x >> ? = x >> (x' >> ?)$, 从左往右不断递推下去
+
+> 未知量可以用函数的参数来表示

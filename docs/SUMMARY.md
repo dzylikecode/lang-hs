@@ -15,4 +15,3 @@
 - [applicative](/docs/applicative.md)
 - [monad](/docs/monad.md)
 - [monoid](/docs/monoid.md)
-- [zipper](/docs/zipper.md)
