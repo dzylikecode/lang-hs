@@ -249,3 +249,7 @@ executables:
 ```
 
 [Html.hs](../example/learn-haskell-by-building-a-blog-generator/ex07/Html.hs ":include :type=code hs")
+
+## cabal
+
+- [#Creating a package](https://book.realworldhaskell.org/read/writing-a-library-working-with-json-data.html#library.package)

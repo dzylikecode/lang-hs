@@ -9,7 +9,15 @@
   let num = 0;
 
   function init() {
-    mermaid.initialize({ startOnLoad: false });
+    mermaid.initialize({ startOnLoad: false, theme: getTheme() });
+    return;
+    function getTheme() {
+      if (window?.matchMedia("(prefers-color-scheme: dark)").matches) {
+        return "dark";
+      } else {
+        return "default";
+      }
+    }
   }
 
   function initEachPage() {
@@ -18,9 +26,9 @@
 
   function main(code) {
     return (
-      '<div class="mermaid" style="background:#E1EFD9" >' +
+      '<pre class="mermaid">' +
       mermaid.render("mermaid-svg-" + num++, code) +
-      "</div>"
+      "</pre>"
     );
   }
 

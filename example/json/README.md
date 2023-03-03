@@ -56,15 +56,3 @@ hs =
 ```
 
 因为 Haskell 没有 instance 这么长的 tuple
-
-## real world
-
-source: https://book.realworldhaskell.org/read/writing-a-library-working-with-json-data.html
-
----
-
-把 object 和 array 看作相同的, 比较有意思
-
----
-
-Observe that the Doc type is actually a tree. The `Concat` and `Union` constructors create an internal node from two other Doc values, while the `Empty` and other simple constructors build leaves.

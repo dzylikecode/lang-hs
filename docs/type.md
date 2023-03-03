@@ -98,6 +98,8 @@ A typeclass is a sort of interface that defines some behavior. If a type is a pa
 
 比如 ts 的 interface
 
+> type 是对 data 的抽象, 而 typeclass 像是对 method(性质) 的抽象
+
 We explained that a typeclass is a sort of an interface that defines some behavior. A type can be made an instance of a typeclass if it supports that behavior. Example: the `Int` type is an instance of the `Eq` typeclass because the `Eq` typeclass defines behavior for stuff that can be equated.
 
 Typeclasses are more like interfaces. We don't make data from typeclasses. Instead, we first make our data type and then we think about what it can act like.
@@ -258,6 +260,15 @@ read "3":: Int
 read "3":: Float
 -- 3.0
 ```
+
+```ghci
+ghci> (read "[Red]")::[Color]
+[Red]
+ghci> (read "[Red,Red,Blue]")::[Color]
+[Red,Red,Blue]
+```
+
+`[Color]`: 首先调用`[]`, 然后调用`Color`
 
 ---
 
@@ -463,3 +474,13 @@ fmap :: (m -> n) -> Barry a b m -> Barry a b n
 ```
 
 > 利用一下 partially
+
+## further reading
+
+- [ ] [Type classes vs object interfaces](https://cstheory.stackexchange.com/questions/9731/type-classes-vs-object-interfaces)
+
+- [ ] [Why You Should Learn Functional Programming: Type Classes vs. Interfaces](https://medium.com/codex/why-you-should-learn-functional-programming-type-classes-vs-interfaces-9d2192d20ac2)
+
+- [ ] [Java's Interface and Haskell's type class: differences and similarities?](https://stackoverflow.com/questions/6948166/javas-interface-and-haskells-type-class-differences-and-similarities)
+
+- [ ] [OOP vs type classes](https://wiki.haskell.org/OOP_vs_type_classes#Type_classes_are_like_interfaces.2Fabstract_classes.2C_not_classes_itself)

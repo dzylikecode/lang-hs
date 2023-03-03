@@ -2,9 +2,9 @@
 
 inspired by https://book.realworldhaskell.org/read/functional-programming.html
 
-## fold
+## foldable
 
-### foldl
+### fold left
 
 ```hs
 foldl :: (a -> b -> a) -> a -> [b] -> a
@@ -26,7 +26,7 @@ $$\text{zero} << x_1 << x_2 << \cdots << x_n$$
 
 > `<<` 表示 foldl 的 step, 左结合
 
-### foldr
+### fold right
 
 ```hs
 foldr :: (a -> b -> b) -> b -> [a] -> b
