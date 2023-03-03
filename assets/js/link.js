@@ -21,6 +21,7 @@
     hook.doneEach(function () {
       modifyReposLink();
       modifyPagesLink();
+      modifyImageLink();
     });
   }
 
@@ -38,6 +39,14 @@
       const relative = link.attributes.href.value;
       const rootPath = pagesFileURL.slice(0, pagesFileURL.lastIndexOf("/") + 1);
       link.href = rootPath + relative;
+    });
+  }
+  function modifyImageLink() {
+    const links = document.querySelectorAll("img.Pages");
+    links.forEach((link) => {
+      const relative = link.attributes.src.value;
+      const rootPath = pagesFileURL.slice(0, pagesFileURL.lastIndexOf("/") + 1);
+      link.src = rootPath + relative;
     });
   }
 
