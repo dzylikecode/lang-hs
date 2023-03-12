@@ -129,3 +129,7 @@ gcd' a b
   `f(g x)` 为 `rest ++ a`
 
 用`id`作为初始值
+
+## loop
+
+the way to emulate a loop is via tail recursion

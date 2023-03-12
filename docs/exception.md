@@ -49,3 +49,26 @@ handler e
 ```
 
 we re-throw the exception that was passed by the handler with the `ioError` function. It has a type of `ioError :: IOException -> IO a`, so it takes an `IOError` and produces an I/O action that will throw it. The I/O action has a type of `IO a`, because it never actually yields a result, so it can act as `IO anything`.
+
+## handle
+
+```hs
+saferFileSize path = handle (\_ -> return Nothing) $ do
+  h <- openFile path ReadMode
+  size <- hFileSize h
+  hClose h
+  return (Just size)
+```
+
+## with
+
+```hs
+getFileSize path = handle (\_ -> return Nothing) $
+  bracket (openFile path ReadMode) hClose $ \h -> do
+    size <- hFileSize h
+    return (Just size)
+```
+
+Is the order in which we call `bracket` and `handle` important? Why?
+
+yes, 调换顺序是不可以的, 因为需要先打开 file, 才能读取 file size

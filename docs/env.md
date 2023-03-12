@@ -142,3 +142,5 @@ import Control.Concurrent.Async
 ## vim
 
 - hlint
+
+- [Haskell Live](http://haskelllive.com/environment.html)
