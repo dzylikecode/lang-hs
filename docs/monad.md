@@ -874,3 +874,7 @@ We don't usually set out to make a monad with the sole purpose of making a monad
 !> 不是为了 monad 而 monad. If all you have is a hammer, everything looks like a nail.
 
 参考示例: <a class="Repos" target="_blank" href="../example/Learn-You-a-Haskell-for-Great-Good/for-a-few-monads-more/coin">coin</a>
+
+## References
+
+1. [All About Monads - HaskellWiki](https://wiki.haskell.org/All_About_Monads)

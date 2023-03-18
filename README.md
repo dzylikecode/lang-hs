@@ -10,11 +10,11 @@
 
 ## reference
 
-- [ ] [Real World Haskell by Bryan O'Sullivan, Don Stewart, and John Goerzen](https://book.realworldhaskell.org/)
+1. [Real World Haskell by Bryan O'Sullivan, Don Stewart, and John Goerzen](https://book.realworldhaskell.org/)
 
-  - [Real World Haskell 中文版](https://rwh.readthedocs.io/en/latest/index.html)
+   [Real World Haskell 中文版](https://rwh.readthedocs.io/en/latest/index.html)
 
-- [x] [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters)
+2. [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/chapters)
 
 - [How to learn Haskell](https://github.com/bitemyapp/learnhaskell)
 

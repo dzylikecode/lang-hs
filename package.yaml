@@ -46,4 +46,9 @@ executables:
       - -threaded
       - -rtsopts
       - -with-rtsopts=-N
+  testSimple:
+    main: main.hs
+    source-dirs: example/test-simple/src
+    dependencies:
+      - QuickCheck
 # tests:

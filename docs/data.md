@@ -239,6 +239,12 @@ int main() {
 }
 ```
 
+---
+
+The answer is simply to omit type constraints from type definitions, and instead place them on the functions that need them.
+
+只有函数才需要约束属性, constraints 相当于属性
+
 ### record syntax
 
 ```hs
